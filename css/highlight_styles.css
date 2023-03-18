@@ -1,0 +1,77 @@
+html {
+	background: rgba(26, 26, 26, 1);
+	color: rgba(214, 214, 214, 1);
+	color-light: hsl(210, 15%, 35%);
+	color-richer: hsl(210, 50%, 72%);
+	color-highlight: hsl(25, 70%, 45%);
+}
+
+.navigation ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.navigation li {
+	float: left;
+	border-right: 1px solid #bbb;
+}
+
+.navigation	li:last-child {
+	border-right: none;
+	right: 0;
+}
+
+.navigation	li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.navigation	li a:hover:not(.current) {
+	background-color: #111;
+}
+
+.navigation form {
+	display: block;
+	float: right;
+}
+
+.navigation form a {
+	display: inline-block;
+}
+
+.clipInfo {
+	display: flex;
+	justify-content: center;
+}
+
+.clipDiv {
+	display: inline-table;
+	text-align: left;
+	vertical-align: center;
+}
+
+.playerDiv {
+	display: block;
+	text-align: center;
+}
+
+.videoPlayers {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

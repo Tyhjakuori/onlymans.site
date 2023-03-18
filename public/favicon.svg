@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8.4666662mm"
+   height="8.4666662mm"
+   viewBox="0 0 8.4666663 8.4666663"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
+   sodipodi:docname="onlymans.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="17.637989"
+     inkscape:cx="21.374319"
+     inkscape:cy="11.254117"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="250.2905"
+       y="89.782402"
+       width="471.99026"
+       height="366.88907"
+       id="rect171" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-51.827912,-9.0826383)">
+    <circle
+       style="fill:#000000;stroke-width:0.0374297"
+       id="path115"
+       cx="56.061245"
+       cy="13.315971"
+       r="4.2333331" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.0372448,0,0,0.03767025,42.158545,7.483157)"
+       id="text169"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:106.667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect171);display:inline;fill:#ffffff"><tspan
+         x="250.29102"
+         y="186.5951"
+         id="tspan577">OMs</tspan></text>
+  </g>
+</svg>
