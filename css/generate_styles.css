@@ -64,6 +64,7 @@ blockquote {
   font-size: xx-large;
   position: relative;
   background-color: gray;
+  -webkit-text-stroke: 0.3px black;
 }
 
 blockquote::before,
