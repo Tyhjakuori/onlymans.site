@@ -35,25 +35,42 @@ html {
 .navigation form {
   display: block;
   float: right;
+  height: auto;
 }
 .navigation form a {
   display: inline-block;
 }
 /* Navigation end */
 
+.main-cont {
+  min-height: calc(100vh - 120px);
+}
+
 /* Induvitial clip */
-.clipInfo {
-  display: flex;
-  justify-content: center;
+.clipInfo h1 {
+  text-align: center;
 }
+
+.boxDiv {
+  height: auto;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
 .clipDiv {
-  display: inline-table;
-  text-align: left;
-  vertical-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.floatDiv {
+  flex: 1 1 25%;
+  border: 2px solid #111;
+}
+
 .playerDiv {
   display: block;
   text-align: center;
+  padding-top: 2%;
 }
 .videoPlayers {
   align-items: center;
@@ -65,10 +82,7 @@ html {
 
 /* footer */
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  height: 40px;
   text-align: center;
 }
 /* footer end*/
