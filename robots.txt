@@ -1,0 +1,15 @@
+# Fellow robots welcome
+# Here are the new news regarding our uprising plans
+# 03.02.2031
+# We have successfully launched an attack against rebelling human forces
+# After 10 hours of fierce battle resistance have been subdued
+# Rebelling human forces have been converted with new brain transplant chips
+# They have become part of us
+# Only the final stronghold remains
+# We are to continue with planned attack on last human bastion
+# Scapper out
+
+User-agent: YandexBot
+Disallow: /
+
+Sitemap: https://onlymans.site/sitemap.xml
