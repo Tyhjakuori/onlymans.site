@@ -40,6 +40,13 @@ html {
 .navigation form a {
   display: inline-block;
 }
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
 /* Navigation end */
 
 .main-cont {

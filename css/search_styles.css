@@ -6,6 +6,10 @@ html {
   color-highlight: hsl(25, 70%, 45%);
 }
 
+body {
+  font-weight: 500;
+}
+
 /* Navigation */
 .navigation ul {
   list-style-type: none;
@@ -40,6 +44,13 @@ html {
 .navigation form a {
   display: inline-block;
 }
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
 /* Navigation end */
 
 .main-cont {
@@ -48,7 +59,6 @@ html {
 
 table {
   width: auto;
-  max-width: 100%;
   border-collapse: collapse;
   border-radius: 4px 4px 4px 4px;
   -moz-border-radius: 4px;
@@ -56,28 +66,27 @@ table {
   box-shadow: 0px 12px 18px -6px rgb(0 0 0 / 22%);
   font-family: "Arial";
   margin: 0px auto 40px auto;
-  overflow: hidden;
-  table-layout: auto;
+  overflow: auto;
+  table-layout: fixed;
 }
 
 table tr th {
-  width: 1px;
+  width: auto;
   border: 1px solid #aaa;
   background-color: #bbb;
   font-size: 16px;
   color: #333;
-  padding: 7px 16px;
   white-space: nowrap;
 }
 
 table tr td {
   width: 1px;
-  max-width: 250px;
   border: 1px solid #ddd;
   font-size: 15px;
-  padding: 5px 16px;
-  white-space: nowrap;
+  text-align: start;
   overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
 }
 
 table tr th {
@@ -107,11 +116,42 @@ table tr th {
 .clip_table th {
   cursor: pointer;
 }
+
 /* Sortable clip table END */
+
+/* Sortable highlight table */
+.highlight_table {
+	width: 90%!important;
+}
+
+.highlight_table thead tr th:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  right: 2px;
+}
+
+.highlight_table thead tr th.sort-asc:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+}
+
+.highlight_table thead tr th.sort-desc:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+.highlight_table th {
+  cursor: pointer;
+}
+
+/* Sortable highlight table END */
 
 /* footer */
 .footer {
-  text-align: center;
   height: 40px;
+  text-align: center;
 }
 /* footer end*/

@@ -41,6 +41,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <title><?php echo $row['title'] . " | OnlyMans" ?></title>
     <meta name="description" contents="Site for OnlyMans">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/clip_styles.css" type="text/css">
 </head>
@@ -54,20 +55,35 @@ if (isset($_GET['id'])) {
                     <li><a href="clips.php">Clips</a></li>
                     <li><a href="highlights.php">Highlights</a></li>
                     <li><a href="generate.php">Generate title</a></li>
-                    <li>
-                        <form action='search.php' method='POST'>
-                            <select name="columns">
-                                <option value="name">Clip ID</option>
-                                <option value="title">Clip title</option>
-                                <option value="broadcaster">Broadcaster</option>
-                                <option value="creator_name">Clipper</option>
-                                <option value="game_name">Game name</option>
-                                <option value="game_id">Game ID</option>
-                            </select>
-                            <input type="text" name="uparameters" placeholder="Search...">
-                            <input type="submit" value="search">
-                        </form>
-                    </li>
+                    <div class="search">
+                        <li>
+                            <form action='search.php' method='POST'>
+                                <select name="columns">
+                                    <option value="name">Clip ID</option>
+                                    <option value="title">Clip title</option>
+                                    <option value="broadcaster">Broadcaster</option>
+                                    <option value="creator_name">Clipper</option>
+                                    <option value="game_name">Game name</option>
+                                    <option value="game_id">Game ID</option>
+                                </select>
+                                <input type="text" name="uparameters" placeholder="Search clips...">
+                                <input type="submit" value="search clips">
+                            </form>
+                        </li>
+                        <li>
+                            <form action='search.php' method='POST'>
+                                <select name="columns">
+                                    <option value="title">Title</option>
+                                    <option value="url">Highlight url</option>
+                                    <option value="user_name">Broadcaster</option>
+                                    <option value="description">Description</option>
+                                    <option value="game_name">Game name</option>
+                                </select>
+                                <input type="text" name="highparams" placeholder="Search highlights...">
+                                <input type="submit" value="search highlights">
+                            </form>
+                        </li>
+                    </div>
                 </ul>
             </nav>
         </header>

@@ -1,10 +1,8 @@
 html {
   background: rgba(26, 26, 26, 1);
   color: rgba(214, 214, 214, 1);
-  color-light: hsl(210, 15%, 35%);
-  color-richer: hsl(210, 50%, 72%);
-  color-highlight: hsl(25, 70%, 45%);
 }
+
 html,
 body {
   margin: 0;
@@ -47,7 +45,37 @@ body {
 .navigation form a {
   display: inline-block;
 }
+
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
 /* Navigation end */
+
+.wrapper {
+  display: flex;
+}
+
+.mainsearch {
+  flex: 1;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.mainsearch:nth-child(1) {
+  margin-bottom: 100px;
+}
+
+.clipofday {
+  flex: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
 /* Footer */
 .footer {
