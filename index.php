@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once(__DIR__ . "/../config.php");
 $resp_clips = $conn->query("SELECT broadcaster FROM clips GROUP BY broadcaster HAVING COUNT(broadcaster) > 1 ORDER BY broadcaster ASC");
 $resp_high = $conn->query("SELECT user_name FROM highlights GROUP BY user_name HAVING COUNT(user_name) > 1 ORDER BY user_name ASC");
@@ -90,9 +91,8 @@ $row = mysqli_fetch_array($random_clip);
             </div>
             <div class="clipofday">
                 <h2>Random clip of the day brought to you by: <?php echo $row['broadcaster'] ?></h2>
-                <iframe src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=127.0.0.1" preload="metadata" autoplay="false" height="720" width="1280" allowfullscreen></iframe>
+                <iframe src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=onlymans.site&parent=www.onlymans.site" preload="metadata" autoplay="false" height="720" width="1280" allowfullscreen></iframe>
             </div>
         </div>
     </div>
-
     <?php echo file_get_contents("html/footer.html"); ?>

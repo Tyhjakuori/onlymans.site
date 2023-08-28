@@ -11,5 +11,9 @@
 
 User-agent: YandexBot
 Disallow: /
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
 
 Sitemap: https://onlymans.site/sitemap.xml

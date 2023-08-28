@@ -116,9 +116,4 @@ $resp2_row = mysqli_fetch_array($resp2);
         <script src="js/jQuery.js" type="text/javascript"></script>
         <script src="js/sorter.js" type="text/javascript"></script>
     </div>
-</body>
-<footer class="footer">
-    Contact me at tyhjakuori@proton.me
-</footer>
-
-</html>
+<?php echo file_get_contents("html/footer.html"); ?>
