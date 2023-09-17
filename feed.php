@@ -26,3 +26,4 @@ while ($row = mysqli_fetch_array($feed)) {
 }
 echo "</channel>";
 echo "</rss>";
+

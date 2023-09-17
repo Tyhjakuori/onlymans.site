@@ -38,11 +38,14 @@ if (isset($_GET['id'])) {
 <html lang=en>
 
 <head>
-    <meta charset="UTF-8">
     <title><?php echo $row['title'] . " | OnlyMans" ?></title>
-    <meta name="description" contents="Site for OnlyMans">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="<?php echo "&quot;" . $row['title'] . "&quot; by: " . $row['user_name']; ?>">
+    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/highlight_styles.css" type="text/css">
+    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>

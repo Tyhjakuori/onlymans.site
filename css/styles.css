@@ -46,6 +46,15 @@ body {
   display: inline-block;
 }
 
+.videoplayer {
+  display: none;
+  position: absolute;
+  min-width: 250px;
+  left: -250px;
+  transition: margin 0.4s;
+  overflow: hidden;
+}
+
 .search {
   display: inline-flex;
   flex-direction: row;
@@ -55,26 +64,21 @@ body {
 }
 /* Navigation end */
 
-.wrapper {
-  display: flex;
-}
-
 .mainsearch {
-  flex: 1;
+  display: flex;
   flex-direction: column;
   justify-content: left;
-}
-
-.mainsearch:nth-child(1) {
-  margin-bottom: 100px;
+  width: 20%;
+  gap: 10px;
 }
 
 .clipofday {
-  flex: auto;
-  flex-direction: column;
+  display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   position: relative;
+  margin-bottom: 20px;
 }
 
 /* Footer */

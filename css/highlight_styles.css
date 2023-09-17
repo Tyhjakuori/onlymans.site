@@ -52,7 +52,7 @@ html {
   min-height: calc(100vh - 120px);
 }
 
-/* Induvitial highlight */
+/* Induvitial clip */
 .highInfo h1 {
   text-align: center;
 }
@@ -84,7 +84,7 @@ html {
   justify-content: center;
   flex-direction: column;
 }
-/* Induvitial highlight end */
+/* Induvitial clip end */
 
 /* Footer */
 .footer {

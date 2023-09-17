@@ -9,11 +9,27 @@
 # We are to continue with planned attack on last human bastion
 # Scapper out
 
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
 User-agent: YandexBot
 Disallow: /
 User-agent: GPTBot
 Disallow: /
 User-agent: ChatGPT-User
+Disallow: /
+User-agent: serpstatbot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: tchelebi
 Disallow: /
 
 Sitemap: https://onlymans.site/sitemap.xml

@@ -6,10 +6,6 @@ html {
   color-highlight: hsl(25, 70%, 45%);
 }
 
-body {
-  font-weight: 500;
-}
-
 /* Navigation */
 .navigation ul {
   list-style-type: none;
@@ -17,7 +13,6 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  width: 100%;
 }
 .navigation li {
   float: left;
@@ -121,7 +116,7 @@ table tr th {
 
 /* Sortable highlight table */
 .highlight_table {
-	width: 90%!important;
+  width: 90% !important;
 }
 
 .highlight_table thead tr th:after {

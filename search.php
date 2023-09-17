@@ -40,11 +40,14 @@ if (isset($_POST['uparameters'])) {
 <html lang=en>
 
 <head>
-    <meta charset="UTF-8">
     <title>Search | OnlyMans</title>
-    <meta name="description" contents="Site for OnlyMans">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Search clips and highlights from OnlyMans users content">
+    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/search_styles.css" type="text/css">
+    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>
@@ -90,13 +93,11 @@ if (isset($_POST['uparameters'])) {
         </header>
         <?php if ($resp_high !== null) : ?>
             <table class="highlight_table" border='2' align='center'>
-        <?php else : ?>
-            <table class="clip_table" border='2' align='center'>
-        <?php endif; ?>
+            <?php else : ?>
+                <table class="clip_table" border='2' align='center'>
+                <?php endif; ?>
                 <h3 align='center'>Search results</h3>
                 <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
-                <h3><?php echo "Search column: " . $column; ?></h3>
-                <h3><?php echo "Search value: " . $new_param; ?></h3>
                 <thead>
                     <tr>
                         <?php if ($resp_high !== null) : ?>
@@ -159,11 +160,4 @@ if (isset($_POST['uparameters'])) {
                     } ?>
                 </tbody>
                 </table>
-                <script src="js/jQuery.js" type="text/javascript"></script>
-                <script src="js/sorter.js" type="text/javascript"></script>
-</body>
-<footer class="footer">
-    Contact me at tyhjakuori@proton.me
-</footer>
-
-</html>
+                <?php echo file_get_contents("html/footer.html"); ?>

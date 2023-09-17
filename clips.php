@@ -13,10 +13,23 @@ if (isset($_POST['clip_brod'])) {
         $stmt->execute();
         $resp = $stmt->get_result();
     }
+    $sort_by = 'ASC';
+} else if (isset($_GET['column']) && isset($_GET['sort'])) {
+    $column = $_GET['column'];
+    $sort = $_GET['sort'];
+    $allowed_columns = array('name', 'title', 'broadcaster', 'creator_name', 'game_name', 'game_id', 'view_count', 'duration', 'created_at', 'added');
+    $sort_by = $sort === 'DESC' ? 'DESC' : 'ASC';
+    $selected_column = in_array($column, $allowed_columns) ? $column : "title";
+    $sql = "SELECT * FROM clips ORDER BY {$selected_column} {$sort_by}";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $resp = $stmt->get_result();
+    $sort_by = $sort === 'ASC' ? 'DESC' : 'ASC';
 } else {
     $sql = $conn->prepare("SELECT * FROM clips");
     $sql->execute();
     $resp = $sql->get_result();
+    $sort_by = 'ASC';
 }
 $row_cnt = $resp->num_rows;
 $resp2 = mysqli_query($conn, "SELECT updated FROM db_updated WHERE table_name='clips' ORDER BY updated DESC LIMIT 1");
@@ -26,12 +39,14 @@ $resp2_row = mysqli_fetch_array($resp2);
 <html lang=en>
 
 <head>
-    <meta charset="UTF-8">
     <title>Clips | OnlyMans</title>
-    <meta name="description" contents="Site for OnlyMans">
-    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Twitch clips from OnlyMans users">
+    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/clips_styles.css" type="text/css">
+    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>
@@ -81,15 +96,15 @@ $resp2_row = mysqli_fetch_array($resp2);
             <h4><?php echo "Last updated: " . $resp2_row['updated']; ?></h4>
             <thead>
                 <tr>
-                    <th>Clip id</th>
-                    <th>Clip title</th>
-                    <th>Broadcaster</th>
-                    <th>Clipper</th>
-                    <th>Game</th>
-                    <th>View count</th>
-                    <th>Duration</th>
-                    <th>Date</th>
-                    <th>Added to DB</th>
+                    <th><a href=<?php echo "/clips.php?column=name&sort={$sort_by}"; ?>>Clip id</a></th>
+                    <th><a href=<?php echo "/clips.php?column=title&sort={$sort_by}"; ?>>Clip title</a></th>
+                    <th><a href=<?php echo "/clips.php?column=broadcaster&sort={$sort_by}"; ?>>Broadcaster</a></th>
+                    <th><a href=<?php echo "/clips.php?column=creator_name&sort={$sort_by}"; ?>>Clipper</a></th>
+                    <th><a href=<?php echo "/clips.php?column=game_name&sort={$sort_by}"; ?>>Game</a></th>
+                    <th><a href=<?php echo "/clips.php?column=view_count&sort={$sort_by}"; ?>>View count</th>
+                    <th><a href=<?php echo "/clips.php?column=duration&sort={$sort_by}"; ?>>Duration</th>
+                    <th><a href=<?php echo "/clips.php?column=created_at&sort={$sort_by}"; ?>>Date</th>
+                    <th><a href=<?php echo "/clips.php?column=added&sort={$sort_by}"; ?>>Added to DB</th>
                 </tr>
             </thead>
             <tbody>
@@ -113,7 +128,5 @@ $resp2_row = mysqli_fetch_array($resp2);
                 } ?>
             </tbody>
         </table>
-        <script src="js/jQuery.js" type="text/javascript"></script>
-        <script src="js/sorter.js" type="text/javascript"></script>
     </div>
-<?php echo file_get_contents("html/footer.html"); ?>
+    <?php echo file_get_contents("html/footer.html"); ?>
