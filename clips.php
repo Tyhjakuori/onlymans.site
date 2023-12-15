@@ -58,6 +58,7 @@ $resp2_row = mysqli_fetch_array($resp2);
                     <li><a href="clips.php">Clips</a></li>
                     <li><a href="highlights.php">Highlights</a></li>
                     <li><a href="generate.php">Generate title</a></li>
+                    <li><a href="statistics.php">Statistics</a></li>
                     <div class="search">
                         <li>
                             <form action='search.php' method='POST'>

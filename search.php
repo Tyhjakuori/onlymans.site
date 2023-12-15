@@ -59,6 +59,7 @@ if (isset($_POST['uparameters'])) {
                     <li><a href="clips.php">Clips</a></li>
                     <li><a href="highlights.php">Highlights</a></li>
                     <li><a href="generate.php">Generate title</a></li>
+                    <li><a href="statistics.php">Statistics</a></li>
                     <div class="search">
                         <li>
                             <form action='search.php' method='POST'>
@@ -93,9 +94,9 @@ if (isset($_POST['uparameters'])) {
         </header>
         <?php if ($resp_high !== null) : ?>
             <table class="highlight_table" border='2' align='center'>
-            <?php else : ?>
-                <table class="clip_table" border='2' align='center'>
-                <?php endif; ?>
+        <?php else : ?>
+            <table class="clip_table" border='2' align='center'>
+        <?php endif; ?>
                 <h3 align='center'>Search results</h3>
                 <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
                 <thead>
@@ -160,4 +161,4 @@ if (isset($_POST['uparameters'])) {
                     } ?>
                 </tbody>
                 </table>
-                <?php echo file_get_contents("html/footer.html"); ?>
+<?php echo file_get_contents("html/footer.html"); ?>

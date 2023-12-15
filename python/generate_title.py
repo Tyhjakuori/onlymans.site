@@ -1,24 +1,20 @@
 import random
 
-
 def rando_title(words):
-    """Select 1 to 6 random words"""
-    title = ""
-    for i in range(random.randint(1, 6)):
-        title += " " + random.choice(words)
+    title = ''
+    for i in range(random.randint(1,6)):
+        title += ' '+random.choice(words)
     return title
 
-
-filename = "stream_titles.txt"
+filename = 'stream_titles.txt'
 words = []
 
-with open(filename, "r") as sentences:
+with open(filename, 'r') as sentences:
     for line in sentences:
         word_list = line.split(" ")
-        for word1 in word_list:
-            if word1 not in words and word1 != "\n":
-                words.append(word1.strip())
+        stripped = [s.strip() for s in word_list]
+        [words.append(word1) for word1 in stripped if not word1 in words]
 
-for i in range(1):
-    wo = rando_title(words)
-    print(wo)
+wo = rando_title(words)
+print(wo)
+

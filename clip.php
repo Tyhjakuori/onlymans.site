@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/clip_styles.css" type="text/css">
     <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"> 
 </head>
 
 <body>
@@ -57,6 +57,7 @@ if (isset($_GET['id'])) {
                     <li><a href="clips.php">Clips</a></li>
                     <li><a href="highlights.php">Highlights</a></li>
                     <li><a href="generate.php">Generate title</a></li>
+                    <li><a href="statistics.php">Statistics</a></li>
                     <div class="search">
                         <li>
                             <form action='search.php' method='POST'>
@@ -125,8 +126,16 @@ if (isset($_GET['id'])) {
         </div>
         <div class="playerDiv">
             <div class="videoPlayers">
-                <iframe src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=onlymans.site&parent=www.onlymans.site" preload="metadata" autoplay="false" height="720" width="1280" allowfullscreen>
+                <iframe
+                    src="https://clips.twitch.tv/embed?clip=<?php echo $row['name']?>&parent=onlymans.site&parent=www.onlymans.site"
+                    preload="metadata"
+                    autoplay="false"
+                    height="720"
+                    width="1280"
+                    allowfullscreen>
                 </iframe>
             </div>
         </div>
-        <?php echo file_get_contents("html/footer.html"); ?>
+<?php echo file_get_contents("html/footer.html"); ?>
+
+

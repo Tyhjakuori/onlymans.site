@@ -8,108 +8,108 @@ header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <html lang=en>
-
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>OnlyMans</title>
-    <meta name="description" content="Index page for OnlyMans experience">
-    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
-    <link rel="icon" href="public/favicon.svg">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
-</head>
-
-<body>
-    <header class="nav">
-        <nav class="navigation">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="clips.php">Clips</a></li>
-                <li><a href="highlights.php">Highlights</a></li>
-                <li><a href="generate.php">Generate title</a></li>
-                <div class="search">
-                    <li>
-                        <form action='search.php' method='POST'>
-                            <label for="clipSearch">Clip search</label>
-                            <select id="clipSearch" name="columns">
-                                <option value="name">Clip ID</option>
-                                <option value="title">Clip title</option>
-                                <option value="broadcaster">Broadcaster</option>
-                                <option value="creator_name">Clipper</option>
-                                <option value="game_name">Game name</option>
-                                <option value="game_id">Game ID</option>
-                            </select>
-                            <input type="text" name="uparameters" placeholder="Search clips...">
-                            <input type="submit" value="search clips">
-                        </form>
-                    </li>
-                    <li>
-                        <form action='search.php' method='POST'>
-                            <label for="highlightSearch">Highlight search</label>
-                            <select id="highlightSearch" name="columns">
-                                <option value="title">Title</option>
-                                <option value="url">Highlight url</option>
-                                <option value="user_name">Broadcaster</option>
-                                <option value="description">Description</option>
-                                <option value="game_name">Game name</option>
-                            </select>
-                            <input type="text" name="highparams" placeholder="Search highlights...">
-                            <input type="submit" value="search highlights">
-                        </form>
-                    </li>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>OnlyMans</title>
+        <meta name="description" content="Index page for OnlyMans experience">
+        <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
+        <link rel="icon" href="public/favicon.svg">
+        <link rel="stylesheet" href="css/styles.css" type="text/css">
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+        <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+    </head>
+    <body>
+        <header class="nav">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="clips.php">Clips</a></li>
+                    <li><a href="highlights.php">Highlights</a></li>
+                    <li><a href="generate.php">Generate title</a></li>
+                    <li><a href="statistics.php">Statistics</a></li>
+                    <div class="search">
+                        <li>
+                            <form action='search.php' method='POST'>
+                                <label for="clipSearch">Clip search</label>
+                                <select id="clipSearch" name="columns">
+                                    <option value="name">Clip ID</option>
+                                    <option value="title">Clip title</option>
+                                    <option value="broadcaster">Broadcaster</option>
+                                    <option value="creator_name">Clipper</option>
+                                    <option value="game_name">Game name</option>
+                                    <option value="game_id">Game ID</option>
+                                </select>
+                                <input type="text" name="uparameters" placeholder="Search clips...">
+                                <input type="submit" value="search clips">
+                            </form>
+                        </li>
+                        <li>
+                            <form action='search.php' method='POST'>
+                                <label for="highlightSearch">Highlight search</label>
+                                <select id="highlightSearch"name="columns">
+                                    <option value="title">Title</option>
+                                    <option value="url">Highlight url</option>
+                                    <option value="user_name">Broadcaster</option>
+                                    <option value="description">Description</option>
+                                    <option value="game_name">Game name</option>
+                                </select>
+                                <input type="text" name="highparams" placeholder="Search highlights...">
+                                <input type="submit" value="search highlights">
+                            </form>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <br>
+         <div class="wrapper">
+            <div class="mainsearch">
+                <form action='clips.php' method='POST'>
+                    <b>Filter clips page by broadcaster</b><br>
+                    <label for="clipFilter">Clip filter</label>
+                    <select id="clipFilter" name="clip_brod">
+                        <option value="All">All</option>
+                        <?php
+                        while ($clip_brod = mysqli_fetch_array($resp_clips)) {
+                            echo "<option value='{$clip_brod['broadcaster']}'>";
+                            echo $clip_brod['broadcaster'];
+                            echo "</option>";
+                        } ?>
+                    </select>
+                    <input type='submit' value='filter'>
+                </form>
+                <br>
+                <form action='highlights.php' method='POST'>
+                    <b>Filter highlights page by broadcaster</b><br>
+                    <label for="highlightFilter">Highlight filter</label>
+                    <select id="highlightFilter" name="high_brod">
+                        <option value="All">All</option>
+                        <?php
+                        while ($high_brod = mysqli_fetch_array($resp_high)) {
+                            echo "<option value='{$high_brod['user_name']}'>";
+                            echo $high_brod['user_name'];
+                            echo "</option>";
+                        } ?>
+                    </select>
+                    <input type='submit' value='filter'>
+                </form>
+            </div>
+            <noscript>
+                <link rel="stylesheet" href="css/noscript.css" type="text/css" />
+                <div class="videoplayer">
+                    <p>There would be a twitch clip here, but it requires javascript unfortunately. Have a video instead!</p>
+                    <h2>Video of the day brought to you by: TrellionSpiers</h2>
+                    <video controls width="1280px" height="720px" preload="metadata" src="/videos/2136.mp4"></video>
                 </div>
-            </ul>
-        </nav>
-    </header>
-    <br>
-    <div class="wrapper">
-        <div class="mainsearch">
-            <form action='clips.php' method='POST'>
-                <b>Filter clips page by broadcaster</b><br>
-                <label for="clipFilter">Clip filter</label>
-                <select id="clipFilter" name="clip_brod">
-                    <option value="All">All</option>
-                    <?php
-                    while ($clip_brod = mysqli_fetch_array($resp_clips)) {
-                        echo "<option value='{$clip_brod['broadcaster']}'>";
-                        echo $clip_brod['broadcaster'];
-                        echo "</option>";
-                    } ?>
-                </select>
-                <input type='submit' value='filter'>
-            </form>
-            <br>
-            <form action='highlights.php' method='POST'>
-                <b>Filter highlights page by broadcaster</b><br>
-                <label for="highlightFilter">Highlight filter</label>
-                <select id="highlightFilter" name="high_brod">
-                    <option value="All">All</option>
-                    <?php
-                    while ($high_brod = mysqli_fetch_array($resp_high)) {
-                        echo "<option value='{$high_brod['user_name']}'>";
-                        echo $high_brod['user_name'];
-                        echo "</option>";
-                    } ?>
-                </select>
-                <input type='submit' value='filter'>
-            </form>
-        </div>
-        <noscript>
-            <link rel="stylesheet" href="css/noscript.css" type="text/css" />
-            <div class="videoplayer">
-                <p>There would be a twitch clip here, but it requires javascript unfortunately. Have a video instead!</p>
-                <h2>Video of the day brought to you by: TrellionSpiers</h2>
-                <video controls width="1280px" height="720px" preload="metadata" src="/videos/2136.mp4"></video>
-            </div>
-        </noscript>
-        <div id="main-content">
-            <div class="clipofday">
-                <h2>Random clip of the day brought to you by: <?php echo $row['broadcaster'] ?></h2>
-                <iframe src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=onlymans.site&parent=www.onlymans.site" preload="metadata" title="Random clip of day" autoplay="false" height="720" width="1280" allowfullscreen></iframe>
+            </noscript>
+            <div id="main-content">
+                <div class="clipofday">
+                    <h2>Random clip of the day brought to you by: <?php echo $row['broadcaster'] ?></h2>
+                    <iframe src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=onlymans.site&parent=www.onlymans.site" preload="metadata" title="Random clip of day" autoplay="false" height="720" width="1280" allowfullscreen></iframe>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <?php echo file_get_contents("html/footer.html"); ?>
+<?php echo file_get_contents("html/footer.html"); ?>
+
