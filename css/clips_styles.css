@@ -1,14 +1,19 @@
 html {
   background: rgba(26, 26, 26, 1);
   color: rgba(214, 214, 214, 1);
-  color-light: hsl(210, 15%, 35%);
-  color-richer: hsl(210, 50%, 72%);
-  color-highlight: hsl(25, 70%, 45%);
 }
 
 body {
   font-weight: 500;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
+
+.main-cont {
+  min-height: calc(100vh - 120px);
+}
+
 /* Navigation */
 .navigation ul {
   list-style-type: none;
@@ -52,12 +57,8 @@ body {
 }
 /* Navigation end */
 
-.main-cont {
-  min-height: calc(100vh - 120px);
-}
-
 table {
-  width: auto;
+  width: 90%;
   border-collapse: collapse;
   border-radius: 4px 4px 4px 4px;
   -moz-border-radius: 4px;
@@ -79,7 +80,6 @@ table tr th {
 }
 
 table tr td {
-  width: 1px;
   border: 1px solid #ddd;
   font-size: 15px;
   text-align: start;

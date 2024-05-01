@@ -12,52 +12,22 @@
 </head>
 <body>
     <div class="main-cont">
-        <header class="nav">
-            <nav class="navigation">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="clips.php">Clips</a></li>
-                    <li><a href="highlights.php">Highlights</a></li>
-                    <li><a href="generate.php">Generate title</a></li>
-                    <li><a href="statistics.php">Statistics</a></li>
-                    <div class="search">
-                        <li>
-                            <form action='search.php' method='POST'>
-                                <select name="columns">
-                                    <option value="name">Clip ID</option>
-                                    <option value="title">Clip title</option>
-                                    <option value="broadcaster">Broadcaster</option>
-                                    <option value="creator_name">Clipper</option>
-                                    <option value="game_name">Game name</option>
-                                    <option value="game_id">Game ID</option>
-                                </select>
-                                <input type="text" name="uparameters" placeholder="Search clips...">
-                                <input type="submit" value="search clips">
-                            </form>
-                        </li>
-                        <li>
-                            <form action='search.php' method='POST'>
-                                <select name="columns">
-                                    <option value="title">Title</option>
-                                    <option value="url">Highlight url</option>
-                                    <option value="user_name">Broadcaster</option>
-                                    <option value="description">Description</option>
-                                    <option value="game_name">Game name</option>
-                                </select>
-                                <input type="text" name="highparams" placeholder="Search highlights...">
-                                <input type="submit" value="search highlights">
-                            </form>
-                        </li>
-                    </div>
-                </ul>
-            </nav>
-        </header>
+        <?php echo file_get_contents("html/navigation.html"); ?>
         <div class="main">
+            <br />
+            <h3>Clips created per year</h3>
+            <img src="charts/clips_created_year.php" alt="clips created per year" />
             <br />
             <h3>Clips created month-year</h3>
             <img src="charts/clips_created_month_year.php" alt="clips created month-year" />
             <br />
+            <h3>Highlights created per year</h3>
+            <img src="charts/highlights_created_year.php" alt="highlights created per year" />
+            <br />
             <h3>Highlights created month-year</h3>
             <img src="charts/highlights_created_month_year.php" alt="highlights created month-year" />
+            <br />
+            <h3>Amount of clips created by user(top 30)</h3>
+            <img src="charts/clips-per-user.php" alt="Amount of clips created by user" />
             <br />
         <?php echo file_get_contents("html/footer.html"); ?>

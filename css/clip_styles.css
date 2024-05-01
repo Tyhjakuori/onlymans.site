@@ -1,9 +1,6 @@
 html {
   background: rgba(26, 26, 26, 1);
   color: rgba(214, 214, 214, 1);
-  color-light: hsl(210, 15%, 35%);
-  color-richer: hsl(210, 50%, 72%);
-  color-highlight: hsl(25, 70%, 45%);
 }
 
 /* Navigation */
@@ -93,3 +90,4 @@ html {
   text-align: center;
 }
 /* footer end*/
+

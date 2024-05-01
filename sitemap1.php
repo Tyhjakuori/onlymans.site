@@ -12,7 +12,7 @@ $highlight_mod = date("Y-m-d", strtotime($resp2_row[0]));
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
          <loc>https://onlymans.site/index.php</loc>
-         <lastmod>2023-12-08</lastmod>
+         <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>
      </url>
      <url>
@@ -29,17 +29,17 @@ $highlight_mod = date("Y-m-d", strtotime($resp2_row[0]));
      </url>
      <url>
          <loc>https://onlymans.site/generate.php</loc>
-         <lastmod>2023-12-08</lastmod>
+         <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>
      </url>
      <url>
          <loc>https://onlymans.site/search.php</loc>
-         <lastmod>2023-12-08</lastmod>
+         <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>
      </url>
      <url>
          <loc>https://onlymans.site/statistics.php</loc>
-         <lastmod>2023-12-08</lastmod>
+         <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>
      </url>
 </urlset>

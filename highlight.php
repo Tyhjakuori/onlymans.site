@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     if (filter_var($sani_id, FILTER_VALIDATE_INT) === 0 || !filter_var($sani_id, FILTER_VALIDATE_INT) === false) {
         $sql = "SELECT * FROM highlights WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("i", $sani_id);
         $stmt->execute();
         $resu = $stmt->get_result();
         $row = $resu->fetch_assoc();
@@ -49,46 +49,7 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <header class="nav">
-        <nav class="navigation">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="clips.php">Clips</a></li>
-                <li><a href="highlights.php">Highlights</a></li>
-                <li><a href="generate.php">Generate title</a></li>
-                <li><a href="statistics.php">Statistics</a></li>
-                <div class="search">
-                        <li>
-                            <form action='search.php' method='POST'>
-                                <select name="columns">
-                                    <option value="name">Clip ID</option>
-                                    <option value="title">Clip title</option>
-                                    <option value="broadcaster">Broadcaster</option>
-                                    <option value="creator_name">Clipper</option>
-                                    <option value="game_name">Game name</option>
-                                    <option value="game_id">Game ID</option>
-                                </select>
-                                <input type="text" name="uparameters" placeholder="Search clips...">
-                                <input type="submit" value="search clips">
-                            </form>
-                        </li>
-                        <li>
-                            <form action='search.php' method='POST'>
-                                <select name="columns">
-                                    <option value="title">Title</option>
-                                    <option value="url">Highlight url</option>
-                                    <option value="user_name">Broadcaster</option>
-                                    <option value="description">Description</option>
-                                    <option value="game_name">Game name</option>
-                                </select>
-                                <input type="text" name="highparams" placeholder="Search highlights...">
-                                <input type="submit" value="search highlights">
-                            </form>
-                        </li>
-                    </div>
-            </ul>
-        </nav>
-    </header>
+    <?php echo file_get_contents("html/navigation.html"); ?>
     <div id="main-cont">
         <div class="highInfo">
             <h1><?php echo "Highlight title: " . $row['title'] ?></h1>
