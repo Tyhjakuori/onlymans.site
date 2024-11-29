@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Statistics | OnlyMans</title>
-    <meta name="description" content="Statistics of OnlyMans clips and highlights">
-    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
+	<meta name="description" content="Statistics of OnlyMans clips and highlights">
+	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/statistics_styles.css" type="text/css">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+	<link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
 </head>
 <body>
-    <div class="main-cont">
+	<div class="main-cont">
         <?php echo file_get_contents("html/navigation.html"); ?>
         <div class="main">
             <br />
@@ -30,4 +30,8 @@
             <h3>Amount of clips created by user(top 30)</h3>
             <img src="charts/clips-per-user.php" alt="Amount of clips created by user" />
             <br />
+            <h3>Amount of clips per game(top 100)</h3>
+            <img src="charts/clips_created_per_game.php" alt="Amount of clips per game" />
+            <br />
         <?php echo file_get_contents("html/footer.html"); ?>
+

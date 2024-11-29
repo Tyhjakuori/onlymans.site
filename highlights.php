@@ -39,14 +39,14 @@ $resp2_row = mysqli_fetch_array($resp2);
 <html lang=en>
 
 <head>
-    <title>Highlights | OnlyMans</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="Twitch highlights from OnlyMans users">
-    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
-    <link rel="icon" href="public/favicon.svg">
-    <link rel="stylesheet" href="css/highlights_styles.css" type="text/css">
-    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+	<title>Highlights | OnlyMans</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="description" content="Twitch highlights from OnlyMans users">
+	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
+	<link rel="icon" href="public/favicon.svg">
+	<link rel="stylesheet" href="css/highlights_styles.css" type="text/css">
+	<link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>

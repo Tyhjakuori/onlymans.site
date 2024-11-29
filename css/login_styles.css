@@ -1,0 +1,107 @@
+html {
+  background: rgba(26, 26, 26, 1);
+  color: rgba(214, 214, 214, 1);
+}
+
+body {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Navigation */
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+.navigation li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.navigation li:last-child {
+  border-right: none;
+  right: 0;
+}
+.navigation li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navigation li a:hover:not(.current) {
+  background-color: #111;
+}
+.navigation form {
+  display: block;
+  float: right;
+}
+.navigation form a {
+  display: inline-block;
+}
+
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
+/* Navigation end */
+
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.main-cont > h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    flex: 1;
+}
+
+.main-cont > form {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.wrapper-ul {
+    list-style-type: none;
+    padding: 0;
+    border-radius: 3px;
+}
+
+.form-group {
+    justify-content: flex-end;
+    padding: .5em;
+}
+
+.form-group > label {
+    padding: .5em 1em .5em 0;
+    justify-content: center;
+    flex: 2;
+}
+
+.form-group > input {
+    flex: 3;
+    padding: .5em;
+}
+
+.submit-btn {
+    cursor: pointer;
+    vertical-align: top;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+/* Footer end*/

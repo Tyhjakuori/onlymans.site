@@ -47,4 +47,19 @@ $highlight_mod = date("Y-m-d", strtotime($resp2_row[0]));
          <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>
      </url>
+     <url>
+         <loc>https://onlymans.site/register.php</loc>
+         <lastmod>2024-07-21</lastmod>
+         <priority>0.5</priority>
+     </url>
+     <url>
+         <loc>https://onlymans.site/login.php</loc>
+         <lastmod>2024-07-21</lastmod>
+         <priority>0.5</priority>
+     </url>
+     <url>
+         <loc>https://onlymans.site/user/dashboard.php</loc>
+         <lastmod>2024-07-21</lastmod>
+         <priority>0.5</priority>
+     </url>
 </urlset>

@@ -1,0 +1,135 @@
+html {
+  background: rgba(26, 26, 26, 1);
+  color: rgba(214, 214, 214, 1);
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* Navigation */
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+.navigation li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.navigation li:last-child {
+  border-right: none;
+  right: 0;
+}
+.navigation li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navigation li a:hover:not(.current) {
+  background-color: #111;
+}
+.navigation form {
+  display: block;
+  float: right;
+}
+.navigation form a {
+  display: inline-block;
+}
+
+.videoplayer {
+	display: none;
+	position: absolute;
+	min-width: 250px;
+	left: -250px;
+	transition: margin .4s;
+	overflow: hidden;
+}
+
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
+/* Navigation end */
+
+#main-cont {
+  min-height: calc(100vh - 70px);
+  width: auto;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: 0px 12px 18px -6px rgb(0 0 0 / 22%);
+  font-family: "Arial";
+  margin: 0px auto 40px auto;
+  overflow: auto;
+  table-layout: fixed;
+}
+
+table tr th {
+	width: auto;
+  border: 1px solid #aaa;
+  background-color: #bbb;
+  font-size: 16px;
+  color: #333;
+  white-space: nowrap;
+}
+
+table tr td {
+  border: 1px solid #ddd;
+  font-size: 15px;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+
+table tr th {
+  position: relative;
+}
+
+/* Sortable clip table */
+.streams_table thead tr th:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  right: 2px;
+}
+
+.streams_table thead tr th.sort-asc:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+}
+
+.streams_table thead tr th.sort-desc:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+.streams_table th {
+  cursor: pointer;
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  height: 50px;
+}
+/* Footer end*/
+

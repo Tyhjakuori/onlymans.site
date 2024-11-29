@@ -1,7 +1,37 @@
 <?php
 include_once(__DIR__ . "/../config.php");
-if (isset($_POST['clip_brod'])) {
-    $caster = mysqli_real_escape_string($conn, $_POST['clip_brod']);
+if (isset($_GET['clip_brod']) && isset($_GET['column']) && isset($_GET['sort'])) {
+    $column = $_GET['column'];
+    $sort = $_GET['sort'];
+    $caster = $_GET['clip_brod'];
+
+    $allowed_columns = array('name', 'title', 'broadcaster', 'creator_name', 'game_name', 'game_id', 'view_count', 'duration', 'created_at', 'added');
+    $sort_by = $sort === 'DESC' ? 'DESC' : 'ASC';
+    $selected_column = in_array($column, $allowed_columns) ? $column : "title";
+    $resp_clips = $conn->query("SELECT broadcaster FROM clips GROUP BY broadcaster HAVING COUNT(broadcaster) > 1 ORDER BY broadcaster ASC");
+    $broadcasters = mysqli_fetch_assoc($resp_clips);
+    $clean_caster = in_array($caster, $broadcasters) ? $caster : "TrellionSpiers";
+
+    $sql = "SELECT * FROM clips WHERE broadcaster LIKE ? ORDER BY NATURAL_SORT_KEY({$selected_column}) {$sort_by}";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $clean_caster);
+    $stmt->execute();
+    $resp = $stmt->get_result();
+} else if (isset($_GET['column']) && isset($_GET['sort'])) {
+    $column = $_GET['column'];
+    $sort = $_GET['sort'];
+
+    $allowed_columns = array('name', 'title', 'broadcaster', 'creator_name', 'game_name', 'game_id', 'view_count', 'duration', 'created_at', 'added');
+    $sort_by = $sort === 'DESC' ? 'DESC' : 'ASC';
+    $selected_column = in_array($column, $allowed_columns) ? $column : "title";
+
+    $sql = "SELECT * FROM clips ORDER BY NATURAL_SORT_KEY({$selected_column}) {$sort_by}";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $resp = $stmt->get_result();
+    $sort_by = $sort === 'ASC' ? 'DESC' : 'ASC';
+} else if (isset($_GET['clip_brod'])) {
+    $caster = mysqli_real_escape_string($conn, $_GET['clip_brod']);
     if ($caster === "All") {
         $sql = $conn->prepare("SELECT * FROM clips");
         $sql->execute();
@@ -14,17 +44,6 @@ if (isset($_POST['clip_brod'])) {
         $resp = $stmt->get_result();
     }
     $sort_by = 'ASC';
-} else if (isset($_GET['column']) && isset($_GET['sort'])) {
-    $column = $_GET['column'];
-    $sort = $_GET['sort'];
-    $allowed_columns = array('name', 'title', 'broadcaster', 'creator_name', 'game_name', 'game_id', 'view_count', 'duration', 'created_at', 'added');
-    $sort_by = $sort === 'DESC' ? 'DESC' : 'ASC';
-    $selected_column = in_array($column, $allowed_columns) ? $column : "title";
-    $sql = "SELECT * FROM clips ORDER BY NATURAL_SORT_KEY({$selected_column}) {$sort_by}";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $resp = $stmt->get_result();
-    $sort_by = $sort === 'ASC' ? 'DESC' : 'ASC';
 } else {
     $sql = $conn->prepare("SELECT * FROM clips");
     $sql->execute();
@@ -41,17 +60,17 @@ $resp2_row = mysqli_fetch_array($resp2);
 <head>
     <title>Clips | OnlyMans</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="Twitch clips from OnlyMans users">
-    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
-    <link rel="icon" href="public/favicon.svg">
-    <link rel="stylesheet" href="css/clips_styles.css" type="text/css">
-    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+	<meta name="description" content="Twitch clips from OnlyMans users">
+	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
+	<link rel="icon" href="public/favicon.svg">
+	<link rel="stylesheet" href="css/clips_styles.css" type="text/css">
+	<link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>
     <?php echo file_get_contents("html/navigation.html"); ?>
-    <div class="main-cont">
+	<div class="main-cont">
         <table class="clip_table" border='2' align='center'>
             <h3 align='center'>Clips table</h3>
             <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
