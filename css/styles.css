@@ -47,12 +47,12 @@ body {
 }
 
 .videoplayer {
-  display: none;
-  position: absolute;
-  min-width: 250px;
-  left: -250px;
-  transition: margin 0.4s;
-  overflow: hidden;
+	display: none;
+	position: absolute;
+	min-width: 250px;
+	left: -250px;
+	transition: margin .4s;
+	overflow: hidden;
 }
 
 .search {
@@ -68,12 +68,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  width: 20%;
-  gap: 10px;
+	width: 20%;
+	gap: 10px;
 }
 
 .clipofday {
-  display: flex;
+	display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -87,3 +87,4 @@ body {
   height: 50px;
 }
 /* Footer end*/
+

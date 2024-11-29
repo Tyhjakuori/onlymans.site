@@ -1,40 +1,46 @@
 html {
-  background: rgba(26, 26, 26, 1);
-  color: rgba(214, 214, 214, 1);
+	background: rgba(26, 26, 26, 1);
+	color: rgba(214, 214, 214, 1);
+}
+
+body {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Navigation */
 .navigation ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 .navigation li {
-  float: left;
-  border-right: 1px solid #bbb;
+	float: left;
+	border-right: 1px solid #bbb;
 }
-.navigation li:last-child {
-  border-right: none;
-  right: 0;
+.navigation	li:last-child {
+	border-right: none;
+	right: 0;
 }
-.navigation li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.navigation	li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
-.navigation li a:hover:not(.current) {
-  background-color: #111;
+.navigation	li a:hover:not(.current) {
+	background-color: #111;
 }
 .navigation form {
-  display: block;
-  float: right;
+	display: block;
+	float: right;
 }
 .navigation form a {
-  display: inline-block;
+	display: inline-block;
 }
 .search {
   display: inline-flex;
@@ -113,7 +119,7 @@ table tr th {
 
 /* Sortable highlight table */
 .highlight_table {
-  width: 90% !important;
+	width: 90%!important;
 }
 
 .highlight_table thead tr th:after {
@@ -147,3 +153,4 @@ table tr th {
   text-align: center;
 }
 /* footer end*/
+

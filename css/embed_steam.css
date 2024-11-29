@@ -52,45 +52,29 @@ html, body {
 }
 /* Navigation end */
 
-.result {
+.steam_app_container {
 	text-align: center;
 	padding-right: calc(25%);
 	padding-left: calc(25%);
 }
 
-blockquote {
+.texts {
+	padding-bottom: 40px;
+}
+
+.title1 {
+	text-align: center;
+}
+
+.steam_container {
 	display: flex;
-  min-height: 2em;
-  padding: 1em 4em;
-  font: 1em/150% sans-serif;
-  text-align: center;
-  font-size: xx-large;
-  position: relative;
-  background-color: gray;
-	-webkit-text-stroke: 0.3px black;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
-blockquote::before,
-blockquote::after {
-  position: absolute;
-  height: 3rem;
-  font:
-    6rem/100% Georgia,
-    "Times New Roman",
-    Times,
-    serif;
-}
-
-blockquote::before {
-  content: "“";
-  top: 0.3rem;
-  left: 0.9rem;
-}
-
-blockquote::after {
-  content: "”";
-  bottom: 0.3rem;
-  right: 0.8rem;
+#contenedor {
+	overflow: hidden;
 }
 
 /* Footer */
@@ -98,4 +82,3 @@ blockquote::after {
 	text-align: center;
 	height: 50px;
 }
-

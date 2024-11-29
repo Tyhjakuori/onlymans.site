@@ -3,6 +3,12 @@ html {
   color: rgba(214, 214, 214, 1);
 }
 
+body {
+	margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Navigation */
 .navigation ul {
   list-style-type: none;

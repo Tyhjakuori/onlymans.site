@@ -33,6 +33,11 @@ $highlight_mod = date("Y-m-d", strtotime($resp2_row[0]));
          <priority>0.5</priority>
      </url>
      <url>
+         <loc>https://onlymans.site/random_steamgame.php</loc>
+         <lastmod>2024-11-09</lastmod>
+         <priority>0.5</priority>
+     </url>
+     <url>
          <loc>https://onlymans.site/search.php</loc>
          <lastmod>2024-04-27</lastmod>
          <priority>0.5</priority>

@@ -48,18 +48,51 @@ if (isset($_POST['uparameters'])) {
     <link rel="stylesheet" href="css/search_styles.css" type="text/css">
     <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-</head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+    <script nonce="NGINX_CSP_NONCE">
+	$(document).ready(function() {
+		$(document).on("click", "table thead tr th:not(.no-sort)", function() {
+			var table = $(this).parents("table");
+			var rows  = $(this).parents("table").find("tbody tr").toArray().sort(TableComparer($(this).index()));
+			var dir   = ($(this).hasClass("sort-asc")) ? "desc" : "asc";
 
+			if (dir == "desc") {
+				rows = rows.reverse();
+			}
+
+			for (var i = 0; i < rows.length; i++) {
+				table.append(rows[i]);
+			}
+
+			table.find("thead tr th").removeClass("sort-asc").removeClass("sort-desc");
+			$(this).removeClass("sort-asc").removeClass("sort-desc") .addClass("sort-" + dir);
+		});
+
+	});
+	function TableComparer(index) {
+		return function(a, b) {
+			var val_a  = TableCellValue(a, index);
+			var val_b  = TableCellValue(b, index);
+			var result = ($.isNumeric(val_a) && $.isNumeric(val_b)) ? val_a - val_b : val_a.toString().localeCompare(val_b);
+
+			return result;
+		}
+	}
+	function TableCellValue(row, index) {
+		return $(row).children("td").eq(index).text();
+	}
+	</script>
+</head>
 <body>
-    <div class="main-cont">
+	<div class="main-cont">
         <?php echo file_get_contents("html/navigation.html"); ?>
+		<h3 align='center'>Search results</h3>
+		<h3><?php echo "Number of results: " . $row_cnt; ?></h3>
         <?php if ($resp_high !== null) : ?>
             <table class="highlight_table" border='2' align='center'>
         <?php else : ?>
             <table class="clip_table" border='2' align='center'>
         <?php endif; ?>
-                <h3 align='center'>Search results</h3>
-                <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
                 <thead>
                     <tr>
                         <?php if ($resp_high !== null) : ?>
@@ -123,3 +156,4 @@ if (isset($_POST['uparameters'])) {
                 </tbody>
                 </table>
 <?php echo file_get_contents("html/footer.html"); ?>
+

@@ -5,9 +5,9 @@ html {
 
 body {
   font-weight: 500;
-  margin-top: 0;
-  margin-left: 0;
-  margin-right: 0;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 /* Navigation */
@@ -118,6 +118,7 @@ table tr th {
 /* Footer */
 .footer {
   height: 40px;
-  text-align: center;
+	text-align: center;
 }
 /* Footer end*/
+
