@@ -72,7 +72,11 @@ $resp2_row = mysqli_fetch_array($resp2);
             <?php
             while ($fetch = mysqli_fetch_array($resp)) {
                 echo "<tr>";
-                echo "<td><a href=\"https://www.twitch.tv/videos/{$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
+                if ($fetch['youtube_url']) {
+                    echo "<td><a href=\"https://www.youtube.com/watch?v={$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
+                } else {
+                    echo "<td><a href=\"https://www.twitch.tv/videos/{$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
+                }
                 echo "<td><a href=\"highlight.php?url={$fetch['url']}\">" . $fetch['title'] . "</a></td>";
                 echo "<td>" . $fetch['user_name'] . "</td>";
                 echo "<td>" . $fetch['description'] . "</td>";
