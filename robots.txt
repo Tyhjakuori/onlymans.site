@@ -36,4 +36,4 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-Sitemap: https://onlymans.site/sitemap.xml
+Sitemap: https://katabasis.onlymans.site/sitemap.xml
