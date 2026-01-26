@@ -61,6 +61,14 @@ body {
   text-align: center;
 }
 
+a {
+  color: lightskyblue;
+}
+
+a:visited { 
+  color: #be89f0; 
+}
+
 .boxDiv {
   height: auto;
   padding-left: 15%;

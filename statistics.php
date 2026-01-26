@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Statistics | OnlyMans</title>
-	<meta name="description" content="Statistics of Katabasis clips and highlights">
+	<meta name="description" content="Statistics of Kabatasis clips">
 	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/statistics_styles.css" type="text/css">

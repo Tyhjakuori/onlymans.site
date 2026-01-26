@@ -76,7 +76,7 @@ $resp2_row = mysqli_fetch_array($resp2);
             <h4><?php echo "Last updated: " . $resp2_row['updated']; ?></h4>
             <thead>
                 <tr>
-                    <th><a href=<?php echo "/clips.php?column=name&sort={$sort_by}"; ?>>Clip id</a></th>
+                    <th>Thumbnail</th>
                     <th><a href=<?php echo "/clips.php?column=title&sort={$sort_by}"; ?>>Clip title</a></th>
                     <th><a href=<?php echo "/clips.php?column=broadcaster&sort={$sort_by}"; ?>>Broadcaster</a></th>
                     <th><a href=<?php echo "/clips.php?column=creator_name&sort={$sort_by}"; ?>>Clipper</a></th>
@@ -91,7 +91,11 @@ $resp2_row = mysqli_fetch_array($resp2);
                 <?php
                 while ($fetch = mysqli_fetch_array($resp)) {
                     echo "<tr>";
-                    echo "<td><a href=\"https://clips.twitch.tv/{$fetch['name']}\" target=\"_blank\">" . $fetch['name'] . "</a></td>";
+                    if ($fetch['thumbnail_url'] === NULL) {
+                        echo "<td></td>";
+                    } else {
+                        echo "<td><img src={$fetch['thumbnail_url']} height='80px' width='180px' rel='preload'></td>";
+                    }
                     echo "<td><a href='clip.php?clipid={$fetch['name']}'>" . $fetch['title'] . "</a></td>";
                     echo "<td>" . $fetch['broadcaster'] . "</td>";
                     echo "<td>" . $fetch['creator_name'] . "</td>";

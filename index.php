@@ -10,7 +10,7 @@ header('Content-Type: text/html; charset=utf-8');
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<title>Katabasis | OnlyMans</title>
-		<meta name="description" content="Find and search Katabasis clips">
+		<meta name="description" content="Index page for OnlyMans katabasis experience">
 		<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1" />
 		<link rel="icon" href="public/favicon.svg">
 		<link rel="stylesheet" href="css/styles.css" type="text/css">

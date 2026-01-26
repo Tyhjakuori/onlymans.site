@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
                         <p><?php echo "<b>Available in Twitch: </b>" . $row['available_twitch'] ?></p>
                     </div>
                     <div class="floatDiv">
-                        <p><?php echo "Clip id: " . $row['name'] ?></p>
+                        <p><?php echo "Clip id: <a href=\"https://clips.twitch.tv/{$row['name']}\" target=\"_blank\">" . $row['name'] . "</a>"?></p>
                     </div>
                 </div>
             </div>

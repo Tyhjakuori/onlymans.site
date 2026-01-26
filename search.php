@@ -30,7 +30,6 @@ if (isset($_POST['uparameters'])) {
     <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/search_styles.css" type="text/css">
-    <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
     <script nonce="NGINX_CSP_NONCE">
@@ -75,7 +74,7 @@ if (isset($_POST['uparameters'])) {
             <table class="clip_table" border='2' align='center'>
                 <thead>
                     <tr>
-                            <th>Clip id</th>
+                            <th>Thumbnail</th>
                             <th>Clip title</th>
                             <th>Broadcaster</th>
                             <th>Clipper</th>
@@ -90,7 +89,11 @@ if (isset($_POST['uparameters'])) {
                     <?php
                         while ($fetch = mysqli_fetch_array($resp)) {
                             echo "<tr>";
-                            echo "<td><a href=\"https://clips.twitch.tv/{$fetch['name']}\" target=\"_blank\">" . $fetch['name'] . "</a></td>";
+                            if ($fetch['thumbnail_url'] === NULL) {
+                                echo "<td></td>";
+                            } else {
+                                echo "<td><img src={$fetch['thumbnail_url']} height='80px' width='180px' rel='preload'></td>";
+                            }
                             echo "<td><a href='clip.php?clipid={$fetch['name']}'>" . $fetch['title'] . "</a></td>";
                             echo "<td>" . $fetch['broadcaster'] . "</td>";
                             echo "<td>" . $fetch['creator_name'] . "</td>";
