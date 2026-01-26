@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang=en>
+
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Statistics | OnlyMans</title>
@@ -10,6 +11,7 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
 </head>
+
 <body>
     <div class="main-cont">
         <?php echo file_get_contents("html/navigation.html"); ?>
@@ -30,4 +32,4 @@
             <h3>Amount of clips created by user(top 30)</h3>
             <img src="charts/clips-per-user.php" alt="Amount of clips created by user" />
             <br />
-        <?php echo file_get_contents("html/footer.html"); ?>
+            <?php echo file_get_contents("html/footer.html"); ?>

@@ -31,3 +31,4 @@ $row = mysqli_fetch_array($random_game);
             </div>
         </div>
         <?php echo file_get_contents("html/footer.html"); ?>
+

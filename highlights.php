@@ -58,7 +58,6 @@ $resp2_row = mysqli_fetch_array($resp2);
         <table class="highlight_table" border='2' align='center'>
             <thead>
                 <tr>
-                    <th><a href=<?php echo "/highlights.php?column=url&sort={$sort_by}"; ?>>URL</a></th>
                     <th><a href=<?php echo "/highlights.php?column=title&sort={$sort_by}"; ?>>Title</a></th>
                     <th><a href=<?php echo "/highlights.php?column=user_name&sort={$sort_by}"; ?>>Broadcaster</a></th>
                     <th><a href=<?php echo "/highlights.php?column=description&sort={$sort_by}"; ?>>Description</a></th>
@@ -72,11 +71,6 @@ $resp2_row = mysqli_fetch_array($resp2);
             <?php
             while ($fetch = mysqli_fetch_array($resp)) {
                 echo "<tr>";
-                if ($fetch['youtube_url']) {
-                    echo "<td><a href=\"https://www.youtube.com/watch?v={$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
-                } else {
-                    echo "<td><a href=\"https://www.twitch.tv/videos/{$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
-                }
                 echo "<td><a href=\"highlight.php?url={$fetch['url']}\">" . $fetch['title'] . "</a></td>";
                 echo "<td>" . $fetch['user_name'] . "</td>";
                 echo "<td>" . $fetch['description'] . "</td>";

@@ -1,4 +1,5 @@
 <?php
+
 function generate_title()
 {
     $lines = array();
@@ -14,7 +15,7 @@ function generate_title()
             }
         }
         if (!feof($handle)) {
-            error_log("Error: unexpected fgets() fail");
+            error_log("Error: unexpected fgets() fail in generate.php");
         }
         fclose($handle);
     }
@@ -34,6 +35,7 @@ function generate_title()
     return rtrim($sent);
 }
 $result = generate_title();
+#exec('cd python && python3 generate_title.py', $python);
 $page = $_SERVER['PHP_SELF'];
 ?>
 <!DOCTYPE html>

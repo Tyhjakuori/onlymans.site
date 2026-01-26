@@ -5,7 +5,7 @@ $resp_high = null;
 if (isset($_POST['uparameters'])) {
     $params = $_POST['uparameters'];
     $columns = $_POST['columns'];
-    $allowed = ["name", "broadcaster", "creator_name", "game_id", "game_name", "title"];
+    $allowed = ["broadcaster", "creator_name", "game_id", "game_name", "title"];
     if (in_array($columns, $allowed)) {
         $column = $columns;
     } else {
@@ -99,7 +99,6 @@ if (isset($_POST['uparameters'])) {
                 <thead>
                     <tr>
                         <?php if ($resp_high !== null) : ?>
-                            <th>URL</th>
                             <th>Title</th>
                             <th>Broadcaster</th>
                             <th>Description</th>
@@ -109,7 +108,7 @@ if (isset($_POST['uparameters'])) {
                             <th>Duration</th>
                             <th>Added to DB</th>
                         <?php else : ?>
-                            <th>Clip id</th>
+                            <th>Thumbnail</th>
                             <th>Clip title</th>
                             <th>Broadcaster</th>
                             <th>Clipper</th>
@@ -126,11 +125,6 @@ if (isset($_POST['uparameters'])) {
                     if ($resp_high) {
                         while ($fetch = mysqli_fetch_array($resp_high)) {
                             echo "<tr>";
-                            if ($fetch['youtube_url']) {
-                                echo "<td><a href=\"https://www.youtube.com/watch?v={$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
-                            } else {
-                                echo "<td><a href=\"https://www.twitch.tv/videos/{$fetch['url']}\" target=\"_blank\">" . $fetch['url'] . "</a></td>";
-                            }
                             echo "<td><a href=\"highlight.php?url={$fetch['url']}\">" . $fetch['title'] . "</a></td>";
                             echo "<td>" . $fetch['user_name'] . "</td>";
                             echo "<td>" . $fetch['description'] . "</td>";
@@ -144,7 +138,11 @@ if (isset($_POST['uparameters'])) {
                     } else {
                         while ($fetch = mysqli_fetch_array($resp)) {
                             echo "<tr>";
-                            echo "<td><a href=\"https://clips.twitch.tv/{$fetch['name']}\" target=\"_blank\">" . $fetch['name'] . "</a></td>";
+                            if ($fetch['thumbnail_url'] === NULL) {
+                                echo "<td></td>";
+                            } else {
+                                echo "<td><img src={$fetch['thumbnail_url']} height='80px' width='180px' rel='preload'></td>";
+                            }
                             echo "<td><a href='clip.php?clipid={$fetch['name']}'>" . $fetch['title'] . "</a></td>";
                             echo "<td>" . $fetch['broadcaster'] . "</td>";
                             echo "<td>" . $fetch['creator_name'] . "</td>";

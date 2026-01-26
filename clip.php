@@ -77,24 +77,34 @@ if (isset($_GET['id'])) {
                         <p><?php echo "<b>Added to DB: </b>" . $row['added'] ?></p>
                     </div>
                     <div class="floatDiv">
-                        <p><?php echo "<b>Available in Twitch: </b>" . $row['available_twitch'] ?></p>
+                        <?php if ($row['youtube_url']) : ?>
+                            <p><?php echo "<b>Available in Youtube: 1</b>" ?></p>
+                        <?php else : ?>
+                            <p><?php echo "<b>Available in Twitch: </b>" . $row['available_twitch'] ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="floatDiv">
-                        <p><?php echo "Clip id: " . $row['name'] ?></p>
+                        <p><?php echo "Clip id: <a href=\"https://clips.twitch.tv/{$row['name']}\" target=\"_blank\">" . $row['name'] . "</a>" ?></p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="playerDiv">
-           <div class="videoPlayers">
-              <iframe
-                src="https://clips.twitch.tv/embed?clip=<?php echo $row['name']?>&parent=onlymans.site&parent=www.onlymans.site"
-                preload="metadata"
-                autoplay="false"
-                height="720"
-                width="1280"
-                allowfullscreen>
-            </iframe>
+            <div class="videoPlayers">
+                <?php if ($row['youtube_url']) : ?>
+                    <video controls height="720" width="1280" preload>
+                        <source src="/videos/<?php echo $row['name']; ?>.mp4" type="video/mp4" />
+                    </video>
+                <?php else : ?>
+                    <iframe
+                        src="https://clips.twitch.tv/embed?clip=<?php echo $row['name'] ?>&parent=onlymans.site&parent=www.onlymans.site"
+                        preload="metadata"
+                        autoplay="false"
+                        height="720"
+                        width="1280"
+                        allowfullscreen>
+                    </iframe>
+                <?php endif; ?>
             </div>
         </div>
-<?php echo file_get_contents("html/footer.html"); ?>
+        <?php echo file_get_contents("html/footer.html"); ?>
