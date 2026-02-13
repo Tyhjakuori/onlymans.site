@@ -1,18 +1,17 @@
 <?php
-header('Content-Type: image/png');
+header('Content-type: image/png');
 include_once(__DIR__ . "/../../config.php");
 
-// Get clips amounts by year and month
-$dates = $conn->query("SELECT DATE_FORMAT(created_at, '%Y-%m'), COUNT(1) as highs_created FROM highlights GROUP BY DATE_FORMAT(created_at, '%Y-%m')");
+// Get amount of clips per game
+$dates = $conn->query("SELECT game_name, COUNT(*) c FROM clips GROUP BY game_name HAVING c > 1 ORDER BY c DESC LIMIT 70");
 
 /*
  * Chart data
  */
 
 $data = array();
-// Add chart data to main array
 while ($row = mysqli_fetch_assoc($dates)) {
-    $data[$row["DATE_FORMAT(created_at, '%Y-%m')"]] = $row["highs_created"];
+    $data[$row["game_name"]] = $row["c"];
 }
 
 /*
@@ -24,9 +23,9 @@ $imageWidth = 1280;
 $imageHeight = 720;
 
 // Grid dimensions and placement within image
-$gridTop = 40;
+$gridTop = 10;
 $gridLeft = 50;
-$gridBottom = 660;
+$gridBottom = 620;
 $gridRight = 1230;
 $gridHeight = $gridBottom - $gridTop;
 $gridWidth = $gridRight - $gridLeft;
@@ -37,16 +36,16 @@ $barWidth = 10;
 
 // Font settings
 $font = __DIR__ . '/LiberationSerif-Regular.ttf';
-$fontSize = 12;
+$fontSize = 10;
 
 // Margin between label and axis
 $labelMargin = 8;
 
 // Max value on y-axis
-$yMaxValue = 205;
+$yMaxValue = 900;
 
 // Distance between grid lines on y-axis
-$yLabelSpan = 5;
+$yLabelSpan = 20;
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);
@@ -69,7 +68,7 @@ for ($i = 0; $i <= $yMaxValue; $i += $yLabelSpan) {
     $y = $gridBottom - $i * $gridHeight / $yMaxValue;
 
     // draw the line
-    imageline($chart, $gridLeft, $y, $gridRight, $y, $gridColor);
+    imageline($chart, $gridLeft, round($y), $gridRight, round($y), $gridColor);
 
     // draw right aligned label
     $labelBox = imagettfbbox($fontSize, 0, $font, strval($i));
@@ -78,13 +77,12 @@ for ($i = 0; $i <= $yMaxValue; $i += $yLabelSpan) {
     $labelX = $gridLeft - $labelWidth - $labelMargin;
     $labelY = $y + $fontSize / 2;
 
-    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, strval($i));
+	imagettftext($chart, $fontSize, 0, $labelX, round($labelY), $labelColor, $font, strval($i));
 }
 
 /*
  * Draw x- and y-axis
  */
-
 imageline($chart, $gridLeft, $gridTop, $gridLeft, $gridBottom, $axisColor);
 imageline($chart, $gridLeft, $gridBottom, $gridRight, $gridBottom, $axisColor);
 
@@ -101,16 +99,16 @@ foreach ($data as $key => $value) {
     $x2 = $itemX + $barWidth / 2;
     $y2 = $gridBottom - 1;
 
-    imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor);
+    imagefilledrectangle($chart,round($x1), round($y1), round($x2), $y2, $barColor);
 
     // Draw the label
     $labelBox = imagettfbbox($fontSize, 0, $font, $key);
     $labelWidth = $labelBox[7] - $labelBox[0];
 
     $labelX = $itemX - $labelWidth / 2;
-    $labelY = $gridBottom + $labelMargin + $fontSize + 38;
+    $labelY = $gridBottom + $labelMargin + $fontSize + 75;
 
-    imagettftext($chart, $fontSize, 90, $labelX, $labelY, $labelColor, $font, $key);
+    imagettftext($chart, $fontSize, 90, round($labelX), $labelY, $labelColor, $font, $key);
 
     $itemX += $barSpacing;
 }

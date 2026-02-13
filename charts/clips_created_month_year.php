@@ -32,17 +32,17 @@ $gridWidth = $gridRight - $gridLeft;
 
 // Bar and line width
 $lineWidth = 1;
-$barWidth = 10;
+$barWidth = 8;
 
 // Font settings
 $font = __DIR__ . '/LiberationSerif-Regular.ttf';
-$fontSize = 12;
+$fontSize = 10;
 
 // Margin between label and axis
-$labelMargin = 8;
+$labelMargin = 6;
 
 // Max value on y-axis
-$yMaxValue = 240;
+$yMaxValue = 220;
 
 // Distance between grid lines on y-axis
 $yLabelSpan = 5;

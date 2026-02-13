@@ -56,7 +56,7 @@ body {
 }
 
 table {
-	width: 90%;
+  width: 90%;
   border-collapse: collapse;
   border-radius: 4px 4px 4px 4px;
   -moz-border-radius: 4px;
@@ -91,35 +91,6 @@ table tr th {
   position: relative;
 }
 
-table tr td a {
-  color: lightskyblue;
-}
-
-table tr td a:visited {
-  color: #be89f0;
-}
-
-table tr td a:hover {
-  color: #ffffff;
-  cursor: pointer;
-}
-
-table tr td a:active {
-  color: #ff4040;
-  text-decoration:none;
-  font-weight:normal;
-}
-
-table tr td img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-table tr td img:hover{
-  transform: scale(1.3);
-}
-
 /* Sortable clip table */
 .clip_table thead tr th:after {
   position: absolute;
@@ -144,37 +115,37 @@ table tr td img:hover{
   cursor: pointer;
 }
 
-/* Sortable clip table END */
-
-/* Sortable highlight table */
-.highlight_table {
-	width: 90%!important;
+table tr td img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.highlight_table thead tr th:after {
-  position: absolute;
-  display: inline-block;
-  content: "";
-  right: 2px;
+table tr td img:hover{
+  transform: scale(1.3);
 }
 
-.highlight_table thead tr th.sort-asc:after {
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid black;
+table tr td a {
+  color: lightskyblue;
 }
 
-.highlight_table thead tr th.sort-desc:after {
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid black;
+table tr td a:visited { 
+  color: #be89f0; 
 }
 
-.highlight_table th {
+table tr td a:hover { 
+  color: #ffffff;
   cursor: pointer;
 }
 
-/* Sortable highlight table END */
+table tr td a:active { 
+  color: #ff4040; 
+  text-decoration:none; 
+  font-weight:normal;
+}
+
+
+/* Sortable clip table END */
 
 /* footer */
 .footer {
