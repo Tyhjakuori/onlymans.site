@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
 		<div class="playerDiv">
 			<div class="videoPlayers">
 				<iframe
-					src="https://clips.twitch.tv/embed?clip=<?php echo $row['name']?>&parent=peggy.onlymans.site"
+					src="https://clips.twitch.tv/embed?clip=<?php echo $row['name']?>&parent=localhost"
 					preload="metadata"
 					autoplay="false"
 					height="720"

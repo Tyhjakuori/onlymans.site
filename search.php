@@ -24,9 +24,9 @@ if (isset($_POST['uparameters'])) {
 <html lang=en>
 
 <head>
-    <title>Search | Peggy OnlyMans</title>
+    <title>Search | Essie OnlyMans</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="Search Peggy clips">
+    <meta name="description" content="Search Essie clips">
     <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
     <link rel="icon" href="public/favicon.svg">
     <link rel="stylesheet" href="css/search_styles.css" type="text/css">

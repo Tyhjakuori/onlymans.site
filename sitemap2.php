@@ -9,7 +9,7 @@ $resp1 = $conn->query("SELECT * FROM clips");
     while ($fetch = $resp1->fetch_array()) {
         $clip_mod = date("Y-m-d", strtotime($fetch['edited']));
         echo "<url>";
-        echo "<loc>https://peggy.onlymans.site/clip.php?clipid={$fetch['name']}</loc>";
+        echo "<loc>https://essie.onlymans.site/clip.php?clipid={$fetch['name']}</loc>";
         echo "<lastmod>{$clip_mod}</lastmod>";
         echo "<priority>0.5</priority>";
         echo "</url>";

@@ -42,7 +42,7 @@ $fontSize = 10;
 $labelMargin = 6;
 
 // Max value on y-axis
-$yMaxValue = 220;
+$yMaxValue = 120;
 
 // Distance between grid lines on y-axis
 $yLabelSpan = 5;

@@ -8,19 +8,19 @@ $clip_mod = date("Y-m-d", strtotime($resp1_row[0]));
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-         <loc>https://peggy.onlymans.site/index.php</loc>
-         <lastmod>2026-01-22</lastmod>
+         <loc>https://essie.onlymans.site/index.php</loc>
+         <lastmod>2026-03-15</lastmod>
          <priority>0.5</priority>
      </url>
      <url>
-         <loc>https://peggy.onlymans.site/clips.php</loc>
+         <loc>https://essie.onlymans.site/clips.php</loc>
          <lastmod><?php echo $clip_mod ?></lastmod>
          <changefreq>daily</changefreq>
          <priority>1</priority>
      </url>
      <url>
-         <loc>https://peggy.onlymans.site/statistics.php</loc>
-         <lastmod>2026-01-22</lastmod>
+         <loc>https://essie.onlymans.site/statistics.php</loc>
+         <lastmod>2026-03-15</lastmod>
          <priority>0.5</priority>
      </url>
 </urlset>

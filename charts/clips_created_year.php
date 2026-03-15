@@ -43,7 +43,7 @@ $fontSize = 13;
 $labelMargin = 4;
 
 // Max value on y-axis
-$yMaxValue = 1050;
+$yMaxValue = 850;
 
 // Distance between grid lines on y-axis
 $yLabelSpan = 25;
@@ -121,5 +121,4 @@ foreach ($data as $key => $value) {
  */
 
 header('Content-Type: image/png');
-imagepng($chart);
-
+imagepng($chart)

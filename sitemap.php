@@ -8,11 +8,11 @@ $clip_mod = date("Y-m-d", strtotime($resp1_row[0]));
 ?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://peggy.onlymans.site/sitemap1.xml</loc>
+        <loc>https://essie.onlymans.site/sitemap1.xml</loc>
         <lastmod>2026-01-22</lastmod>
     </sitemap>
     <sitemap>
-        <loc>https://peggy.onlymans.site/sitemap2.xml</loc>
+        <loc>https://essie.onlymans.site/sitemap2.xml</loc>
         <lastmod><?php echo $clip_mod ?></lastmod>
     </sitemap>
 </sitemapindex>

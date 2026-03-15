@@ -10,7 +10,7 @@ if (isset($_GET['clip_brod']) && isset($_GET['column']) && isset($_GET['sort']))
     $selected_column = in_array($column, $allowed_columns) ? $column : "title";
     $resp_clips = $conn->query("SELECT broadcaster FROM clips GROUP BY broadcaster HAVING COUNT(broadcaster) > 1 ORDER BY broadcaster ASC");
     $broadcasters = mysqli_fetch_assoc($resp_clips);
-    $clean_caster = in_array($caster, $broadcasters) ? $caster : "TrellionSpiers";
+    $clean_caster = in_array($caster, $broadcasters) ? $caster : "essie_ch";
 
     $sql = "SELECT * FROM clips WHERE broadcaster LIKE ? ORDER BY NATURAL_SORT_KEY({$selected_column}) {$sort_by}";
     $stmt = $conn->prepare($sql);
@@ -58,9 +58,9 @@ $resp2_row = mysqli_fetch_array($resp2);
 <html lang=en>
 
 <head>
-    <title>Clips | OnlyMans</title>
+    <title>Clips | Essie OnlyMans</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta name="description" content="Twitch clips from MISSPEGGYx">
+	<meta name="description" content="Twitch clips from Essie">
 	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
 	<link rel="icon" href="public/favicon.svg">
 	<link rel="stylesheet" href="css/clips_styles.css" type="text/css">
