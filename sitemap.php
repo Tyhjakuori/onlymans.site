@@ -12,7 +12,7 @@ $highlight_mod = date("Y-m-d", strtotime($resp2_row[0]));
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>https://onlymans.site/sitemap1.xml</loc>
-        <lastmod>2024-04-27</lastmod>
+        <lastmod>2026-05-03</lastmod>
     </sitemap>
     <sitemap>
         <loc>https://onlymans.site/sitemap2.xml</loc>

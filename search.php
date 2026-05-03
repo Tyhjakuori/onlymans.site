@@ -2,19 +2,67 @@
 include_once(__DIR__ . "/../config.php");
 $resp = null;
 $resp_high = null;
+$dateFrom = null;
+$dateTo = null;
+$dateFromChecked = null;
+$dateToChecked = null;
+$dateSearchChecked = null;
 if (isset($_POST['uparameters'])) {
     $params = $_POST['uparameters'];
     $columns = $_POST['columns'];
+    $dateSearch = $_POST['dateSearch'];
+    $dateFrom = $_POST['dateFrom'];
+    $dateTo = $_POST['dateTo'];
     $allowed = ["broadcaster", "creator_name", "game_id", "game_name", "title"];
     if (in_array($columns, $allowed)) {
         $column = $columns;
     } else {
         $column = "title";
     }
-    $sql = "SELECT * FROM clips WHERE $column LIKE ?";
+    if (isset($dateSearch)) {
+        $dateSearchArr = explode("-", $dateSearch);
+        if (count($dateSearchArr) === 3) {
+            if (checkdate($dateSearchArr[1], $dateSearchArr[2], $dateSearchArr[0])) {
+                $dateSearchChecked = $dateSearch;
+            }
+        }
+    }
+    if (isset($dateFrom)) {
+        $dateFromArr = explode("-", $dateFrom);
+        if (count($dateFromArr) === 3) {
+            if (checkdate($dateFromArr[1], $dateFromArr[2], $dateFromArr[0])) {
+                $dateFromChecked = "$dateFrom 00:00:00";
+            }
+        }
+    }
+    if (isset($dateTo)) {
+        $dateToArr = explode("-", $dateTo);
+        if (count($dateToArr) === 3) {
+            if (checkdate($dateToArr[1], $dateToArr[2], $dateToArr[0])) {
+                $dateToChecked = "$dateTo 23:59:59";
+            }
+        }
+    }
+    if (isset($dateFromChecked) && isset($dateToChecked) && isset($params)) {
+        $sql = "SELECT * FROM clips WHERE $column LIKE ? AND created_at BETWEEN ? AND ?";
+    } else if (isset($dateFromChecked) && isset($dateToChecked)) {
+        $sql = "SELECT * FROM clips WHERE created_at BETWEEN ? AND ?";
+    } else if (isset($dateSearchChecked)) {
+        $sql = "SELECT * FROM clips WHERE date(created_at) = ?";
+    } else {
+        $sql = "SELECT * FROM clips WHERE $column LIKE ?";
+    }
     $stmt = $conn->prepare($sql);
     $new_param = strtolower("%$params%");
-    $stmt->bind_param("s", $new_param);
+    if (isset($dateFromChecked) && isset($dateToChecked) && isset($params)) {
+        $stmt->bind_param("sss", $new_param, $dateFromChecked, $dateToChecked);
+    } else if (isset($dateFromChecked) && isset($dateToChecked)) {
+        $stmt->bind_param("ss", $dateFromChecked, $dateToChecked);
+    } else if (isset($dateSearchChecked)) {
+        $stmt->bind_param("s", $dateSearchChecked);
+    } else {
+        $stmt->bind_param("s", $new_param);
+    }
     $stmt->execute();
     $resp = $stmt->get_result();
     $row_cnt = $resp->num_rows;
@@ -48,41 +96,68 @@ if (isset($_POST['uparameters'])) {
     <link rel="stylesheet" href="css/search_styles.css" type="text/css">
     <link rel="alternate" type="application/rss+xml" title="OnlyMans site news" href="/rss.xml">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
     <script nonce="NGINX_CSP_NONCE">
-        $(document).ready(function() {
-            $(document).on("click", "table thead tr th:not(.no-sort)", function() {
-                var table = $(this).parents("table");
-                var rows = $(this).parents("table").find("tbody tr").toArray().sort(TableComparer($(this).index()));
-                var dir = ($(this).hasClass("sort-asc")) ? "desc" : "asc";
+        document.addEventListener('click', function(e) {
+            try {
+                function findElementRecursive(element, tag) {
+                    return element.nodeName === tag ? element :
+                        findElementRecursive(element.parentNode, tag)
+                }
+                var descending_th_class = ' dir-d '
+                var ascending_th_class = ' dir-u '
+                var ascending_table_sort_class = 'asc'
+                var regex_dir = / dir-(u|d) /
+                var regex_table = /\bsortable\b/
+                var alt_sort = e.shiftKey || e.altKey
+                var element = findElementRecursive(e.target, 'TH')
+                var tr = findElementRecursive(element, 'TR')
+                var table = findElementRecursive(tr, 'TABLE')
 
-                if (dir == "desc") {
-                    rows = rows.reverse();
+                function reClassify(element, dir) {
+                    element.className = element.className.replace(regex_dir, '') + dir
                 }
 
-                for (var i = 0; i < rows.length; i++) {
-                    table.append(rows[i]);
+                function getValue(element) {
+                    return (
+                        (alt_sort && element.getAttribute('data-sort-alt')) ||
+                        element.getAttribute('data-sort') || element.innerText
+                    )
                 }
-
-                table.find("thead tr th").removeClass("sort-asc").removeClass("sort-desc");
-                $(this).removeClass("sort-asc").removeClass("sort-desc").addClass("sort-" + dir);
-            });
-
+                if (regex_table.test(table.className)) {
+                    var column_index
+                    var nodes = tr.cells
+                    for (var i = 0; i < nodes.length; i++) {
+                        if (nodes[i] === element) {
+                            column_index = element.getAttribute('data-sort-col') || i
+                        } else {
+                            reClassify(nodes[i], '')
+                        }
+                    }
+                    var dir = descending_th_class
+                    if (
+                        element.className.indexOf(descending_th_class) !== -1 ||
+                        (table.className.indexOf(ascending_table_sort_class) !== -1 &&
+                            element.className.indexOf(ascending_th_class) == -1)
+                    ) {
+                        dir = ascending_th_class
+                    }
+                    reClassify(element, dir)
+                    var org_tbody = table.tBodies[0]
+                    var rows = [].slice.call(org_tbody.rows, 0)
+                    var reverse = dir === ascending_th_class
+                    rows.sort(function(a, b) {
+                        var x = getValue((reverse ? a : b).cells[column_index])
+                        var y = getValue((reverse ? b : a).cells[column_index])
+                        return isNaN(x - y) ? x.localeCompare(y) : x - y
+                    })
+                    var clone_tbody = org_tbody.cloneNode()
+                    while (rows.length) {
+                        clone_tbody.appendChild(rows.splice(0, 1)[0])
+                    }
+                    table.replaceChild(clone_tbody, org_tbody)
+                }
+            } catch (error) {}
         });
-
-        function TableComparer(index) {
-            return function(a, b) {
-                var val_a = TableCellValue(a, index);
-                var val_b = TableCellValue(b, index);
-                var result = ($.isNumeric(val_a) && $.isNumeric(val_b)) ? val_a - val_b : val_a.toString().localeCompare(val_b);
-
-                return result;
-            }
-        }
-
-        function TableCellValue(row, index) {
-            return $(row).children("td").eq(index).text();
-        }
     </script>
 </head>
 
@@ -92,9 +167,9 @@ if (isset($_POST['uparameters'])) {
         <h3 align='center'>Search results</h3>
         <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
         <?php if ($resp_high !== null) : ?>
-            <table class="highlight_table" border='2' align='center'>
+            <table class="highlight_table sortable" border='2' align='center'>
             <?php else : ?>
-                <table class="clip_table" border='2' align='center'>
+                <table class="clip_table sortable" border='2' align='center'>
                 <?php endif; ?>
                 <thead>
                     <tr>

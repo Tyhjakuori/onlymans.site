@@ -32,4 +32,6 @@
             <h3>Amount of clips created by user(top 30)</h3>
             <img src="charts/clips-per-user.php" alt="Amount of clips created by user" />
             <br />
+            <h3>Amount of clips per game(top 100)</h3>
+            <img src="charts/clips_created_per_game.php" alt="Amount of clips created by user" />
             <?php echo file_get_contents("html/footer.html"); ?>

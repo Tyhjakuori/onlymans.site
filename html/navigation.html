@@ -8,10 +8,23 @@
       <li><a href="random_steamgame.php">Random Steam game</a></li>
       <li><a href="statistics.php">Statistics</a></li>
       <li><a href="wall_of_shame.php">Wall of shame</a></li>
-      <li><a href="https://jankrank.org/" target="_blank" rel="noopener noreferrer">JankRank wiki</a></li>
+      <li>
+        <a
+          href="https://jankrank.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >JankRank wiki</a
+        >
+      </li>
       <div class="search">
         <li>
           <form action="search.php" method="POST">
+            <label for="dateSearch">Search date</label>
+            <input name="dateSearch" type="date" />
+            <label for="dateFrom">Start date</label>
+            <input name="dateFrom" type="date" />
+            <label for="dateTo">End date</label>
+            <input name="dateTo" type="date" />
             <select name="columns">
               <option value="title">Clip title</option>
               <option value="broadcaster">Broadcaster</option>
