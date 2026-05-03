@@ -9,7 +9,7 @@ $clip_mod = date("Y-m-d", strtotime($resp1_row[0]));
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>https://katabasis.onlymans.site/sitemap1.xml</loc>
-        <lastmod>2026-01-22</lastmod>
+        <lastmod>2026-05-03</lastmod>
     </sitemap>
     <sitemap>
         <loc>https://katabasis.onlymans.site/sitemap2.xml</loc>

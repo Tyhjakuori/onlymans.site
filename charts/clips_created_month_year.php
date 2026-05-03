@@ -23,8 +23,8 @@ $imageWidth = 1280;
 $imageHeight = 720;
 
 // Grid dimensions and placement within image
-$gridTop = 40;
-$gridLeft = 50;
+$gridTop = 20;
+$gridLeft = 40;
 $gridBottom = 660;
 $gridRight = 1230;
 $gridHeight = $gridBottom - $gridTop;
@@ -42,10 +42,10 @@ $fontSize = 10;
 $labelMargin = 6;
 
 // Max value on y-axis
-$yMaxValue = 340;
+$yMaxValue = 570;
 
 // Distance between grid lines on y-axis
-$yLabelSpan = 5;
+$yLabelSpan = 10;
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);

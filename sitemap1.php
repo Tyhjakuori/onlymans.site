@@ -9,7 +9,7 @@ $clip_mod = date("Y-m-d", strtotime($resp1_row[0]));
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
          <loc>https://katabasis.onlymans.site/index.php</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-04-19</lastmod>
          <priority>0.5</priority>
      </url>
      <url>
@@ -20,7 +20,7 @@ $clip_mod = date("Y-m-d", strtotime($resp1_row[0]));
      </url>
      <url>
          <loc>https://katabasis.onlymans.site/statistics.php</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-04-19</lastmod>
          <priority>0.5</priority>
      </url>
 </urlset>

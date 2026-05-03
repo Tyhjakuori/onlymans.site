@@ -43,10 +43,10 @@ $fontSize = 13;
 $labelMargin = 4;
 
 // Max value on y-axis
-$yMaxValue = 2800;
+$yMaxValue = 4500;
 
 // Distance between grid lines on y-axis
-$yLabelSpan = 50;
+$yLabelSpan = 100;
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);

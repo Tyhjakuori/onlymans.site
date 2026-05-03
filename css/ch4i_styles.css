@@ -1,0 +1,158 @@
+html {
+  background: rgba(26, 26, 26, 1);
+  color: rgba(214, 214, 214, 1);
+}
+
+html,
+body {
+  margin: 0;
+}
+
+.main-cont {
+  min-height: calc(100vh - 70px);
+  width: auto;
+}
+/* Navigation */
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+.navigation li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.navigation li:last-child {
+  border-right: none;
+  right: 0;
+}
+.navigation li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navigation li a:hover:not(.current) {
+  background-color: #111;
+}
+.navigation form {
+  display: block;
+  float: right;
+}
+.navigation form a {
+  display: inline-block;
+}
+
+.search {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 2;
+  float: right;
+}
+/* Navigation end */
+
+.countdown {
+  height: 50%;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  flex-wrap: wrap;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.timer h3 {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.counter {
+  display: flex;
+  max-width: fit-content;
+  gap: 0.75em;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+.counter__box {
+  text-align: center;
+  background: red;
+  width: 89px;
+  height: 103px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem;
+}
+
+.counter__time {
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.counter__duration {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0;
+  color: #eee;
+}
+
+/* HELPERS */
+
+.dots {
+  font-size: 52px;
+  color: #002e46;
+  margin: -0.75rem;
+  padding: 0;
+}
+
+.exp {
+  font-size: 52px;
+  font-family: "Roboto", sans-serif;
+}
+
+.black-white {
+  background: linear-gradient(
+    to top,
+    #922820 0%,
+    #922820 50%,
+    #db3c30 50%,
+    #db3c30 100%
+  );
+}
+
+.sky-blue {
+  background: linear-gradient(
+    to top,
+    #f44336 0%,
+    #f44336 50%,
+    #f6685e 50%,
+    #f6685e 100%
+  );
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  height: 50px;
+}
+/* Footer end*/

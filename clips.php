@@ -58,18 +58,18 @@ $resp2_row = mysqli_fetch_array($resp2);
 <html lang=en>
 
 <head>
-    <title>Clips | OnlyMans</title>
+    <title>Clips | Katabasis</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta name="description" content="Twitch clips from Katabasis">
-	<meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
-	<link rel="icon" href="public/favicon.svg">
-	<link rel="stylesheet" href="css/clips_styles.css" type="text/css">
-	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <meta name="description" content="Twitch clips from Katabasis">
+    <meta name="viewport" content="width=device-width, height=device-height, viewport-fit=cover, initial-scale=1">
+    <link rel="icon" href="public/favicon.svg">
+    <link rel="stylesheet" href="css/clips_styles.css" type="text/css">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 
 <body>
     <?php echo file_get_contents("html/navigation.html"); ?>
-	<div class="main-cont">
+    <div class="main-cont">
         <table class="clip_table" border='2' align='center'>
             <h3 align='center'>Clips table</h3>
             <h3><?php echo "Number of results: " . $row_cnt; ?></h3>
@@ -93,6 +93,8 @@ $resp2_row = mysqli_fetch_array($resp2);
                     echo "<tr>";
                     if ($fetch['thumbnail_url'] === NULL) {
                         echo "<td></td>";
+                    } else if (file_exists("public/images/{$fetch['name']}_thumb.jpg")) {
+                        echo "<td><img src='public/images/{$fetch['name']}_thumb.jpg' height='80px' width='180px' loading='auto'></td>";
                     } else {
                         echo "<td><img src={$fetch['thumbnail_url']} height='80px' width='180px' rel='preload'></td>";
                     }
